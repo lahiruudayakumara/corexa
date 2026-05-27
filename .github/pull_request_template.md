@@ -1,7 +1,13 @@
 ## Summary
 
-- Describe the problem
-- Describe the solution
+- What problem does this change solve?
+- What approach did you take?
+
+## Scope
+
+- Apps or packages touched:
+- Architectural impact:
+- User-facing impact:
 
 ## Validation
 
@@ -9,7 +15,13 @@
 - [ ] `pnpm typecheck`
 - [ ] `go test ./runtime/daemon/...`
 - [ ] `cargo test --manifest-path native/tree-sitter-indexer/Cargo.toml`
+- [ ] Relevant docs updated
 
 ## Risks
 
-- Note any user-facing, runtime, or architecture risks
+- What could regress?
+- Are there security, migration, or runtime risks?
+
+## Follow-up
+
+- Is additional work intentionally deferred?
