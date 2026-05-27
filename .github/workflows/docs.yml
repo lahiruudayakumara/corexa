@@ -1,0 +1,61 @@
+name: Docs
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate local markdown links
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          const roots = ['README.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'GOVERNANCE.md', 'SECURITY.md', 'SUPPORT.md'];
+          const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+            const next = path.join(dir, entry.name);
+            return entry.isDirectory() ? walk(next) : [next];
+          });
+
+          const files = [...roots, ...walk('docs').filter(file => file.endsWith('.md'))];
+          const missing = [];
+
+          for (const file of files) {
+            const text = fs.readFileSync(file, 'utf8');
+
+            for (const match of text.matchAll(/\[[^\]]+\]\((?!https?:|mailto:|#)([^)]+)\)/g)) {
+              const target = match[1].split('#')[0];
+              const resolved = path.normalize(path.join(path.dirname(file), target));
+
+              if (!fs.existsSync(resolved)) {
+                missing.push(file + ' -> ' + match[1]);
+              }
+            }
+          }
+
+          if (missing.length) {
+            console.error(missing.join('\n'));
+            process.exit(1);
+          }
+
+          console.log('All local markdown links resolved.');
+          EOF

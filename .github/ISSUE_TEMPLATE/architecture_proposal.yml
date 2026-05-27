@@ -1,0 +1,29 @@
+name: Architecture proposal
+description: Propose a meaningful architecture or platform design change
+title: "[Architecture] "
+labels: ["architecture"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What architectural limitation or opportunity are you addressing?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed design
+      description: Describe the proposed architecture, interfaces, or package changes
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Tradeoffs and alternatives
+      description: What alternatives were considered and what are the risks?
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impacted areas
+      description: Which apps, packages, runtime modules, or docs would be affected?

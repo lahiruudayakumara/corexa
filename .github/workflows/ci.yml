@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - setup: node
+          - setup: go
+          - setup: rust
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        if: matrix.setup == 'node'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        if: matrix.setup == 'node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install JS dependencies
+        if: matrix.setup == 'node'
+        run: pnpm install --frozen-lockfile=false
+
+      - name: Lint
+        if: matrix.setup == 'node'
+        run: pnpm lint
+
+      - name: Typecheck
+        if: matrix.setup == 'node'
+        run: pnpm typecheck
+
+      - name: Setup Go
+        if: matrix.setup == 'go'
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Go test
+        if: matrix.setup == 'go'
+        run: go test ./runtime/daemon/...
+
+      - name: Setup Rust
+        if: matrix.setup == 'rust'
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cargo test
+        if: matrix.setup == 'rust'
+        run: cargo test --manifest-path native/tree-sitter-indexer/Cargo.toml

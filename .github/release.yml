@@ -1,0 +1,21 @@
+changelog:
+  categories:
+    - title: "Platform"
+      labels:
+        - "platform"
+        - "runtime"
+    - title: "Desktop and CLI"
+      labels:
+        - "desktop"
+        - "cli"
+    - title: "Agents and Intelligence"
+      labels:
+        - "agents"
+        - "repo-intelligence"
+        - "memory"
+    - title: "Documentation"
+      labels:
+        - "documentation"
+    - title: "Dependencies"
+      labels:
+        - "dependencies"

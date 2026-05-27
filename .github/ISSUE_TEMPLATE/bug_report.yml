@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a defect in Corexa
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reliable set of steps to reproduce the problem
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Corexa version, model provider, and workspace details
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or traces
+      description: Paste relevant logs, stack traces, or screenshots
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: How severe is this problem and who does it affect?

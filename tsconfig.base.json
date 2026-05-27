@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
+    "declaration": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@corexa/shared": ["packages/shared/src/index.ts"],
+      "@corexa/runtime-client": ["packages/runtime-client/src/index.ts"],
+      "@corexa/sdk": ["packages/sdk/src/index.ts"],
+      "@corexa/workspace-core": ["packages/workspace-core/src/index.ts"],
+      "@corexa/repo-intelligence": ["packages/repo-intelligence/src/index.ts"],
+      "@corexa/memory-core": ["packages/memory-core/src/index.ts"],
+      "@corexa/plugin-kit": ["packages/plugin-kit/src/index.ts"],
+      "@corexa/ui": ["packages/ui/src/index.ts"]
+    }
+  }
+}
