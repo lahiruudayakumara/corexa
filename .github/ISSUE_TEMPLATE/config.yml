@@ -3,3 +3,12 @@ contact_links:
   - name: Architecture discussions
     url: https://github.com/opencorex-org/corexa/discussions
     about: Use Discussions for architectural proposals and product direction
+  - name: Contributor guide
+    url: https://github.com/opencorex-org/corexa/blob/main/CONTRIBUTING.md
+    about: Read the contribution workflow, review expectations, and setup guide
+  - name: Security policy
+    url: https://github.com/opencorex-org/corexa/blob/main/SECURITY.md
+    about: Report vulnerabilities privately instead of opening public issues
+  - name: Support
+    url: https://github.com/opencorex-org/corexa/blob/main/SUPPORT.md
+    about: Use the right support path for bugs, questions, docs, or security issues

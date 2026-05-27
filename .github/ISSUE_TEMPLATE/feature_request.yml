@@ -15,8 +15,15 @@ body:
     attributes:
       label: Proposed capability
       description: Describe the desired behavior, UX, or architecture change
+    validations:
+      required: true
   - type: textarea
     id: constraints
     attributes:
       label: Constraints
       description: Privacy, performance, compatibility, or enterprise considerations
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What alternatives or workarounds exist today, and why are they insufficient?
