@@ -1,0 +1,30 @@
+{
+  "name": "corexa",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck",
+    "format": "biome check --write .",
+    "changeset": "changeset",
+    "desktop:dev": "pnpm --filter @corexa/desktop dev",
+    "cli:dev": "pnpm --filter @corexa/cli dev",
+    "runtime:dev": "go run ./runtime/daemon/cmd/corexad",
+    "runtime:test": "go test ./runtime/daemon/...",
+    "native:test": "cargo test --manifest-path native/tree-sitter-indexer/Cargo.toml"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.28.1",
+    "turbo": "^2.0.12",
+    "typescript": "^5.6.3"
+  }
+}

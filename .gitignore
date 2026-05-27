@@ -1,0 +1,15 @@
+node_modules
+.pnpm-store
+.turbo
+.gocache
+dist
+build
+coverage
+.DS_Store
+.env
+.env.local
+apps/desktop/out
+apps/desktop/dist-electron
+runtime/daemon/bin
+memory/qdrant/snapshots
+*.db
