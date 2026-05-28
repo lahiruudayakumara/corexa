@@ -1,0 +1,10 @@
+{
+  "id": "hello-world",
+  "name": "Hello World Plugin",
+  "version": "0.1.0",
+  "entrypoint": "./index.js",
+  "permissions": ["workspace:read"],
+  "contributes": {
+    "commands": ["hello-world.sayHello"]
+  }
+}

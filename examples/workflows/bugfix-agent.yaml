@@ -1,0 +1,9 @@
+name: bugfix-agent
+description: Run planner -> coder -> reviewer for a scoped bugfix
+steps:
+  - role: planner
+    action: plan
+  - role: coder
+    action: implement
+  - role: reviewer
+    action: review
