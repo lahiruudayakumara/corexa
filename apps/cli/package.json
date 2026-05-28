@@ -1,0 +1,28 @@
+{
+  "name": "@corexa/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "corexa": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc --project tsconfig.json",
+    "lint": "biome check .",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test": "echo \"No CLI tests wired yet\""
+  },
+  "dependencies": {
+    "@corexa/runtime-client": "workspace:*",
+    "@corexa/shared": "workspace:*",
+    "@corexa/workspace-core": "workspace:*",
+    "chalk": "^5.4.1",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
