@@ -1,0 +1,18 @@
+{
+  "name": "@corexa/memory-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@corexa/shared": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "lint": "biome check .",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test": "echo \"No memory-core tests wired yet\""
+  }
+}
