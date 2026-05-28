@@ -1,0 +1,38 @@
+{
+  "name": "@corexa/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "predev": "node ./scripts/verify-electron.mjs",
+    "dev": "electron-vite dev",
+    "prebuild": "node ./scripts/verify-electron.mjs",
+    "build": "electron-vite build",
+    "lint": "biome check .",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test": "echo \"No desktop tests wired yet\"",
+    "repair:electron": "node ./node_modules/electron/install.js"
+  },
+  "dependencies": {
+    "@corexa/runtime-client": "workspace:*",
+    "@corexa/shared": "workspace:*",
+    "@corexa/ui": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "xterm": "^5.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "@biomejs/biome": "^1.9.4",
+    "electron": "^33.2.1",
+    "electron-vite": "^2.3.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

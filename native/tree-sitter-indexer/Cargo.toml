@@ -1,0 +1,17 @@
+[package]
+name = "corexa-tree-sitter-indexer"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "corexa_tree_sitter_indexer"
+path = "src/lib.rs"
+
+[[bin]]
+name = "corexa-tree-sitter-indexer"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tree-sitter = "0.24"
