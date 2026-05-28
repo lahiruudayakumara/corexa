@@ -1,0 +1,19 @@
+{
+  "name": "@corexa/sdk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@corexa/runtime-client": "workspace:*",
+    "@corexa/shared": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "lint": "biome check .",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test": "echo \"No SDK tests wired yet\""
+  }
+}
