@@ -11,6 +11,7 @@ const iconsetDir = join(iconsDir, "corexa.iconset");
 const icnsPath = join(iconsDir, "corexa.icns");
 const icoPath = join(iconsDir, "corexa.ico");
 const desktopPngPath = join(iconsDir, "corexa-app-icon.png");
+const icnsTiffPath = join(iconsDir, "corexa-multi.tiff");
 const swiftModuleCacheDir = join(rootDir, ".swift-module-cache");
 const swiftScriptPath = join(__dirname, "render-app-icons.swift");
 
@@ -60,11 +61,19 @@ if (existsSync(icnsPath)) {
   rmSync(icnsPath, { force: true });
 }
 
-const icnsResult = spawnSync("iconutil", ["-c", "icns", iconsetDir, "-o", icnsPath], { stdio: "inherit" });
-
-if (icnsResult.status !== 0) {
-  console.warn("warning: iconutil could not generate corexa.icns. Dock icon will continue using the rounded PNG asset.");
-}
+runOrThrow("tiffutil", [
+  "-cat",
+  join(iconsetDir, "icon_16x16.png"),
+  join(iconsetDir, "icon_32x32.png"),
+  join(iconsetDir, "icon_128x128.png"),
+  join(iconsetDir, "icon_256x256.png"),
+  join(iconsetDir, "icon_512x512.png"),
+  join(iconsetDir, "icon_512x512@2x.png"),
+  "-out",
+  icnsTiffPath,
+]);
+runOrThrow("tiff2icns", [icnsTiffPath, icnsPath]);
+rmSync(icnsTiffPath, { force: true });
 
 const icoSources = [
   { fileName: "icon_16x16.png", width: 16, height: 16 },

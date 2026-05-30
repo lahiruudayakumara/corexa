@@ -5,6 +5,9 @@ node_modules
 # Local caches
 .gocache
 apps/desktop/.swift-module-cache
+apps/desktop/.electron-shell
+apps/desktop/.tmp
+apps/desktop/.iconset-test
 
 # Build outputs
 dist
@@ -22,3 +25,4 @@ memory/qdrant/snapshots
 
 # Local data
 *.db
+apps/desktop/resources/icons/corexa-multi.tiff
