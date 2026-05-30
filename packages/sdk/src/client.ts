@@ -1,6 +1,6 @@
 import { CorexaRuntimeClient } from "@corexa/runtime-client";
-import { loadWorkspaceSummary } from "./workspace.js";
 import { streamChat } from "./chat.js";
+import { loadWorkspaceSummary } from "./workspace.js";
 
 export class CorexaClient {
   readonly runtime: CorexaRuntimeClient;

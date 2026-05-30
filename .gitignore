@@ -1,15 +1,28 @@
 node_modules
 .pnpm-store
 .turbo
+
+# Local caches
 .gocache
+apps/desktop/.swift-module-cache
+apps/desktop/.electron-shell
+apps/desktop/.tmp
+apps/desktop/.iconset-test
+
+# Build outputs
 dist
 build
 coverage
+apps/desktop/out
+apps/desktop/dist
+runtime/daemon/bin
+memory/qdrant/snapshots
+
+# Local environment
 .DS_Store
 .env
 .env.local
-apps/desktop/out
-apps/desktop/dist-electron
-runtime/daemon/bin
-memory/qdrant/snapshots
+
+# Local data
 *.db
+apps/desktop/resources/icons/corexa-multi.tiff

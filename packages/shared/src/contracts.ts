@@ -12,6 +12,18 @@ export interface WorkspaceSummary {
   repositoryStatus: RepositoryStatus;
 }
 
+export interface WorkspaceEntry {
+  name: string;
+  path: string;
+  kind: "directory" | "file";
+}
+
+export interface WorkspaceDetails {
+  branch: string;
+  changedFiles: string[];
+  topEntries: WorkspaceEntry[];
+}
+
 export interface RuntimeHealth {
   status: RuntimeStatus;
   provider: string;

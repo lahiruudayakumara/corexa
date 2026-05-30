@@ -1,14 +1,16 @@
 {
   "name": "@corexa/desktop",
+  "productName": "Corexa",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "main": "dist/main/main.js",
   "scripts": {
     "predev": "node ./scripts/verify-electron.mjs",
-    "dev": "electron-vite dev",
+    "dev": "node ./scripts/dev.mjs",
     "prebuild": "node ./scripts/verify-electron.mjs",
     "build": "electron-vite build",
+    "generate:icons": "node ./scripts/generate-icons.mjs",
     "lint": "biome check .",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test": "echo \"No desktop tests wired yet\"",

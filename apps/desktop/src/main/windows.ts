@@ -1,16 +1,30 @@
-import { BrowserWindow } from "electron";
+import { existsSync } from "node:fs";
 import { join } from "node:path";
+import { BrowserWindow } from "electron";
 
 export function createMainWindow(): BrowserWindow {
+  const isMac = process.platform === "darwin";
+  const iconCandidates = [
+    process.platform === "win32"
+      ? join(__dirname, "../../resources/icons/corexa.ico")
+      : join(__dirname, "../../resources/icons/corexa-app-icon.png"),
+    join(__dirname, "../../resources/icons/corexa-app-icon.png"),
+    join(__dirname, "../../resources/brand/corexa-mark.png"),
+  ];
+  const windowIconPath = iconCandidates.find((candidate) => existsSync(candidate));
+
   const window = new BrowserWindow({
     width: 1560,
     height: 960,
     minWidth: 1200,
     minHeight: 800,
-    backgroundColor: "#08111f",
-    titleBarStyle: "hiddenInset",
+    backgroundColor: "#f6f4ef",
+    frame: isMac,
+    icon: windowIconPath,
+    title: "Corexa",
+    titleBarStyle: "hidden",
     webPreferences: {
-      preload: join(__dirname, "../preload/index.js"),
+      preload: join(__dirname, "../preload/index.mjs"),
       sandbox: true,
     },
   });

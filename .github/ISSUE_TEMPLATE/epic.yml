@@ -1,0 +1,49 @@
+name: Epic
+description: Track a multi-issue milestone, workstream, or major delivery objective
+title: "[Epic] "
+labels: ["epic", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Epics are usually created by maintainers to coordinate a larger body of work across multiple issues.
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What outcome should this epic deliver?
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Why this matters
+      description: What user, platform, or business problem does this epic address?
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success signals
+      description: How will we know the epic is complete and valuable?
+      placeholder: |
+        - Desktop startup is stable on macOS and Windows
+        - Runtime sessions reconnect after restart
+        - CI has smoke coverage for the new workflow
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and work breakdown
+      description: List expected child issues, streams, or deliverables.
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and risks
+      description: What other issues, milestones, or external constraints could block this?
+  - type: textarea
+    id: exit
+    attributes:
+      label: Exit criteria
+      description: What must be true to close this epic?

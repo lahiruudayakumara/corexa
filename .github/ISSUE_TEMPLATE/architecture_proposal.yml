@@ -1,29 +1,62 @@
 name: Architecture proposal
-description: Propose a meaningful architecture or platform design change
+description: Propose a meaningful architecture, platform, or interface change
 title: "[Architecture] "
-labels: ["architecture"]
+labels: ["architecture", "needs-design-review"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for architectural changes that affect contracts, package boundaries, extensibility, or platform direction.
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Primary scope
+      options:
+        - Monorepo and package boundaries
+        - Desktop and IPC
+        - Runtime engine
+        - Agents and orchestration
+        - Repository intelligence
+        - Memory and vector storage
+        - SDKs and public APIs
+        - Plugins and extensibility
+        - Security and sandboxing
+        - Cross-cutting platform design
+    validations:
+      required: true
   - type: textarea
     id: problem
     attributes:
       label: Problem statement
-      description: What architectural limitation or opportunity are you addressing?
+      description: What limitation, risk, or strategic opportunity are you addressing?
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
       label: Proposed design
-      description: Describe the proposed architecture, interfaces, or package changes
+      description: Describe the architecture, interfaces, data flow, or package changes.
     validations:
       required: true
+  - type: textarea
+    id: contracts
+    attributes:
+      label: Contracts and boundaries
+      description: Which APIs, events, schemas, or package boundaries change?
   - type: textarea
     id: tradeoffs
     attributes:
       label: Tradeoffs and alternatives
-      description: What alternatives were considered and what are the risks?
+      description: What alternatives were considered and what are their pros and cons?
+    validations:
+      required: true
   - type: textarea
-    id: impact
+    id: rollout
     attributes:
-      label: Impacted areas
-      description: Which apps, packages, runtime modules, or docs would be affected?
+      label: Rollout and migration
+      description: How should this ship? Include migration, feature flags, compatibility, or sequencing details.
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+      description: What testing, docs, benchmarks, or design review should happen before adoption?

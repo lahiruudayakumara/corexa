@@ -48,7 +48,7 @@ pnpm build
 pnpm lint
 pnpm test
 pnpm typecheck
-go test ./runtime/daemon/...
+go -C runtime/daemon test ./...
 cargo test --manifest-path native/tree-sitter-indexer/Cargo.toml
 ```
 
@@ -110,7 +110,7 @@ Typical validation:
 ```bash
 pnpm lint
 pnpm typecheck
-go test ./runtime/daemon/...
+go -C runtime/daemon test ./...
 cargo test --manifest-path native/tree-sitter-indexer/Cargo.toml
 ```
 

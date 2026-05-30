@@ -1,11 +1,14 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Architecture discussions
+  - name: Questions and discussions
     url: https://github.com/opencorex-org/corexa/discussions
-    about: Use Discussions for architectural proposals and product direction
+    about: Use Discussions for questions, design exploration, and product direction
   - name: Contributor guide
     url: https://github.com/opencorex-org/corexa/blob/main/CONTRIBUTING.md
     about: Read the contribution workflow, review expectations, and setup guide
+  - name: Issue planning and label guide
+    url: https://github.com/opencorex-org/corexa/blob/main/docs/project/github-issues.md
+    about: Review issue taxonomy, milestones, labels, and the starter backlog
   - name: Security policy
     url: https://github.com/opencorex-org/corexa/blob/main/SECURITY.md
     about: Report vulnerabilities privately instead of opening public issues

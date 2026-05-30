@@ -1,0 +1,41 @@
+name: Plugin proposal
+description: Propose a new plugin, integration, or extension point for the Corexa ecosystem
+title: "[Plugin] "
+labels: ["plugin", "enhancement", "triage"]
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow to unlock
+      description: What developer workflow should this plugin enable?
+    validations:
+      required: true
+  - type: textarea
+    id: integration
+    attributes:
+      label: Integration target
+      description: Which tool, provider, system, or platform would the plugin integrate with?
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: Required capabilities
+      description: What commands, APIs, UI hooks, events, or permissions should the plugin use?
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security and permissions
+      description: What data, credentials, workspace access, or execution permissions would be required?
+  - type: textarea
+    id: ux
+    attributes:
+      label: UX expectations
+      description: Where should this appear in Corexa, and how should users configure or control it?
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and prior art
+      description: Are there comparable integrations in other tools, or current workarounds in Corexa?

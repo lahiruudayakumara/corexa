@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
+import type { AgentRole } from "@corexa/shared";
 import { Command } from "commander";
 import { chatCommand } from "./commands/chat.js";
 import { initCommand } from "./commands/init.js";
 import { modelsCommand } from "./commands/models.js";
 import { runAgentCommand } from "./commands/run-agent.js";
 import { scanCommand } from "./commands/scan.js";
-import type { AgentRole } from "@corexa/shared";
 
 const program = new Command();
 
@@ -19,9 +19,13 @@ program.command("init").argument("[name]").action(initCommand);
 
 program.command("chat").argument("<prompt>").action(chatCommand);
 
-program.command("run-agent").argument("<role>").argument("<task>").action((role, task) => {
-  void runAgentCommand(role as AgentRole, task);
-});
+program
+  .command("run-agent")
+  .argument("<role>")
+  .argument("<task>")
+  .action((role, task) => {
+    void runAgentCommand(role as AgentRole, task);
+  });
 
 program.command("models").action(modelsCommand);
 

@@ -1,29 +1,77 @@
 name: Feature request
-description: Propose a new product or platform capability
+description: Propose a product, platform, or workflow enhancement for Corexa
 title: "[Feature] "
-labels: ["enhancement"]
+labels: ["enhancement", "triage"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Feature requests should explain the developer outcome, not just the implementation idea.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Product area
+      options:
+        - Desktop app
+        - CLI
+        - Runtime engine
+        - Agents and orchestration
+        - Repository intelligence
+        - Memory and indexing
+        - Plugin system
+        - SDKs and APIs
+        - Docs and onboarding
+        - Other
+    validations:
+      required: true
   - type: textarea
     id: problem
     attributes:
       label: Problem statement
-      description: Which developer workflow or platform gap should Corexa address?
+      description: Which developer workflow, gap, or pain point should Corexa address?
+      placeholder: I cannot reuse repository context across coding sessions without rescanning, which makes offline workflows slow.
+    validations:
+      required: true
+  - type: textarea
+    id: users
+    attributes:
+      label: Who benefits
+      description: Which users or teams would this help?
+      placeholder: Solo developers using local models, enterprise teams with privacy constraints, plugin authors
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
       label: Proposed capability
-      description: Describe the desired behavior, UX, or architecture change
+      description: Describe the desired behavior, UX, or platform capability.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What should be true when this is complete?
+      placeholder: |
+        - Existing workspace indexes can be resumed
+        - Cache state is visible in the desktop app and CLI
+        - Rescan behavior is explicit and traceable
     validations:
       required: true
   - type: textarea
     id: constraints
     attributes:
-      label: Constraints
-      description: Privacy, performance, compatibility, or enterprise considerations
+      label: Constraints and non-goals
+      description: Privacy, performance, compatibility, enterprise, or scope constraints.
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives considered
-      description: What alternatives or workarounds exist today, and why are they insufficient?
+      description: What workarounds or alternative approaches exist today, and why are they not enough?
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I can help refine the requirements
+        - label: I can help implement this feature
