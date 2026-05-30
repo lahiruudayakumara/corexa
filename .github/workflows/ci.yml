@@ -28,8 +28,6 @@ jobs:
       - name: Setup pnpm
         if: matrix.setup == 'node'
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Setup Node.js
         if: matrix.setup == 'node'
@@ -58,7 +56,7 @@ jobs:
 
       - name: Go test
         if: matrix.setup == 'go'
-        run: go test ./runtime/daemon/...
+        run: go -C runtime/daemon test ./...
 
       - name: Setup Rust
         if: matrix.setup == 'rust'

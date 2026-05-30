@@ -28,7 +28,7 @@ pnpm typecheck
 ## Runtime Validation
 
 ```bash
-go test ./runtime/daemon/...
+go -C runtime/daemon test ./...
 cargo test --manifest-path native/tree-sitter-indexer/Cargo.toml
 ```
 

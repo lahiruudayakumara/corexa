@@ -13,7 +13,7 @@
 
 - [ ] `pnpm lint`
 - [ ] `pnpm typecheck`
-- [ ] `go test ./runtime/daemon/...`
+- [ ] `go -C runtime/daemon test ./...`
 - [ ] `cargo test --manifest-path native/tree-sitter-indexer/Cargo.toml`
 - [ ] Relevant docs updated
 
