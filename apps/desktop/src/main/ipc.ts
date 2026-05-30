@@ -2,8 +2,13 @@ import { execFile } from "node:child_process";
 import { access, readdir } from "node:fs/promises";
 import { basename, join } from "node:path";
 import { promisify } from "node:util";
+import type {
+  RuntimeHealth,
+  WorkspaceDetails,
+  WorkspaceEntry,
+  WorkspaceSummary,
+} from "@corexa/shared";
 import { dialog, ipcMain } from "electron";
-import type { RuntimeHealth, WorkspaceDetails, WorkspaceEntry, WorkspaceSummary } from "@corexa/shared";
 
 const execFileAsync = promisify(execFile);
 const workspaceRoot = process.cwd();

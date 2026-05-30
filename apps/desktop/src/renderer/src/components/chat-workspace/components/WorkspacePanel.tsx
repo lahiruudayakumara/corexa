@@ -1,5 +1,5 @@
-import type { RefObject } from "react";
 import type { WorkspaceDetails } from "@corexa/shared";
+import type { RefObject } from "react";
 import {
   IconAdd,
   IconBranch,

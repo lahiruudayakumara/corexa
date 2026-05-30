@@ -6,11 +6,7 @@ type DesktopShellLayoutProps = {
   sidebar: ReactNode;
 };
 
-export function DesktopShellLayout({
-  isCompactSidebar,
-  panel,
-  sidebar,
-}: DesktopShellLayoutProps) {
+export function DesktopShellLayout({ isCompactSidebar, panel, sidebar }: DesktopShellLayoutProps) {
   return (
     <div
       className={`grid h-full min-h-0 ${

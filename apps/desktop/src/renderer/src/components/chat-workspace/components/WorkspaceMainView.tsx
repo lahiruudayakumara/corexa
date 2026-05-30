@@ -97,7 +97,10 @@ export function WorkspaceMainView({
                 className="flex w-full items-center justify-between rounded-[20px] bg-[var(--corexa-muted-bg)] px-4 py-3 text-left transition hover:bg-[var(--corexa-muted-bg-strong)]"
                 key={path}
                 onClick={() => {
-                  onInjectPrompt(`Review the current changes in ${path}`, `Selected changed file ${path}`);
+                  onInjectPrompt(
+                    `Review the current changes in ${path}`,
+                    `Selected changed file ${path}`,
+                  );
                 }}
                 type="button"
               >

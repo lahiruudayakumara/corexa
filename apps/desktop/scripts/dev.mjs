@@ -1,5 +1,5 @@
-import { dirname, join, resolve } from "node:path";
 import { spawn } from "node:child_process";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { prepareElectronShell } from "./prepare-electron-shell.mjs";
 

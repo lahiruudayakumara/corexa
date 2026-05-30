@@ -1,12 +1,7 @@
 import type { RuntimeHealth } from "@corexa/shared";
 import { BRAND_LOGO_SRC, settingsNavigationItems } from "../constants.js";
 import { IconClose, IconDesktop, IconMoon, IconSun } from "../icons.js";
-import type {
-  DesktopSettings,
-  ResolvedTheme,
-  SettingsSection,
-  ThemePreference,
-} from "../types.js";
+import type { DesktopSettings, ResolvedTheme, SettingsSection, ThemePreference } from "../types.js";
 
 type SettingsModalProps = {
   activeSection: SettingsSection;
@@ -67,9 +62,7 @@ export function SettingsModal({
       return (
         <div className="space-y-8">
           <div className="space-y-2">
-            <h3 className="text-xs font-semibold text-(--corexa-text-primary)">
-              Appearance
-            </h3>
+            <h3 className="text-xs font-semibold text-(--corexa-text-primary)">Appearance</h3>
             <p className="max-w-180 text-xs leading-6 text-(--corexa-text-muted)">
               Control how Corexa looks across the desktop shell. Theme changes are applied
               immediately and saved for future sessions.
@@ -310,11 +303,11 @@ export function SettingsModal({
   return (
     <div
       className="absolute inset-0 z-40 flex items-center justify-center bg-[var(--corexa-overlay-bg)] px-8 py-8 backdrop-blur-sm"
-      onClick={onClose}
+      onMouseDown={onClose}
     >
       <div
         className="max-h-[88vh] w-full max-w-[1040px] overflow-hidden rounded-[30px] border border-[color:var(--corexa-border-subtle)] bg-[var(--corexa-modal-bg)] shadow-[0_30px_80px_rgba(0,0,0,0.18)]"
-        onClick={(event) => {
+        onMouseDown={(event) => {
           event.stopPropagation();
         }}
       >
@@ -378,7 +371,9 @@ export function SettingsModal({
               </button>
             </div>
 
-            <div className="min-h-0 flex-1 overflow-y-auto px-7 py-6">{renderSettingsContent()}</div>
+            <div className="min-h-0 flex-1 overflow-y-auto px-7 py-6">
+              {renderSettingsContent()}
+            </div>
           </div>
         </div>
       </div>

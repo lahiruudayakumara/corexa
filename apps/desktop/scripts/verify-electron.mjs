@@ -11,7 +11,9 @@ function fail(message) {
   console.error("");
   console.error("Repair steps:");
   console.error("1. pnpm --filter @corexa/desktop run repair:electron");
-  console.error("2. If that fails, ensure install scripts are enabled: pnpm config set ignore-scripts false");
+  console.error(
+    "2. If that fails, ensure install scripts are enabled: pnpm config set ignore-scripts false",
+  );
   console.error("3. Reinstall workspace dependencies: pnpm install");
   console.error("");
   process.exit(1);
@@ -28,7 +30,9 @@ try {
 const pathFile = path.join(electronPackageDir, "path.txt");
 
 if (!existsSync(pathFile)) {
-  fail("Electron package metadata exists, but the downloaded binary marker file path.txt is missing.");
+  fail(
+    "Electron package metadata exists, but the downloaded binary marker file path.txt is missing.",
+  );
 }
 
 const executableRelativePath = readFileSync(pathFile, "utf8").trim();

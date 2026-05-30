@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { SettingsModal } from "./chat-workspace/components/SettingsModal.js";
+import { WorkspacePanel } from "./chat-workspace/components/WorkspacePanel.js";
+import { WorkspaceSidebar } from "./chat-workspace/components/WorkspaceSidebar.js";
 import {
-  LIVE_PROJECT_ID,
   LEGACY_THREAD_STORAGE_KEY,
+  LIVE_PROJECT_ID,
   SETTINGS_STORAGE_KEY,
   WORKSPACE_STORAGE_KEY,
   defaultSettings,
@@ -20,9 +23,6 @@ import {
   projectToWorkspaceDetails,
   projectToWorkspaceSummary,
 } from "./chat-workspace/helpers.js";
-import { WorkspacePanel } from "./chat-workspace/components/WorkspacePanel.js";
-import { SettingsModal } from "./chat-workspace/components/SettingsModal.js";
-import { WorkspaceSidebar } from "./chat-workspace/components/WorkspaceSidebar.js";
 import { DesktopShellLayout } from "./chat-workspace/layouts/DesktopShellLayout.js";
 import type {
   ChatWorkspaceProps,
@@ -34,8 +34,8 @@ import type {
   SettingsSection,
   SidebarMode,
   ThreadRecord,
-  ThreadView,
   ThreadSort,
+  ThreadView,
 } from "./chat-workspace/types.js";
 
 export function ChatWorkspace({
@@ -143,7 +143,9 @@ export function ChatWorkspace({
         return [liveProject, ...currentProjects];
       }
 
-      return currentProjects.map((project) => (project.id === LIVE_PROJECT_ID ? liveProject : project));
+      return currentProjects.map((project) =>
+        project.id === LIVE_PROJECT_ID ? liveProject : project,
+      );
     });
 
     setActiveProjectId((currentProjectId) => currentProjectId ?? LIVE_PROJECT_ID);
@@ -188,8 +190,11 @@ export function ChatWorkspace({
     };
   }, []);
 
-  const activeProject = projects.find((project) => project.id === activeProjectId) ?? projects[0] ?? null;
-  const activeWorkspaceSummary = activeProject ? projectToWorkspaceSummary(activeProject) : workspace;
+  const activeProject =
+    projects.find((project) => project.id === activeProjectId) ?? projects[0] ?? null;
+  const activeWorkspaceSummary = activeProject
+    ? projectToWorkspaceSummary(activeProject)
+    : workspace;
   const activeWorkspaceDetails = activeProject ? projectToWorkspaceDetails(activeProject) : details;
   const workspaceName = activeWorkspaceSummary?.name ?? liveWorkspaceName;
   const workspacePath = activeWorkspaceSummary?.rootPath ?? liveWorkspacePath;
@@ -201,7 +206,8 @@ export function ChatWorkspace({
   const themeStyles = getThemeStyles(resolvedTheme);
 
   useEffect(() => {
-    document.documentElement.style.backgroundColor = resolvedTheme === "dark" ? "#0f1216" : "#f6f4ef";
+    document.documentElement.style.backgroundColor =
+      resolvedTheme === "dark" ? "#0f1216" : "#f6f4ef";
     document.body.style.backgroundColor = resolvedTheme === "dark" ? "#0f1216" : "#f6f4ef";
   }, [resolvedTheme]);
 
@@ -245,27 +251,42 @@ export function ChatWorkspace({
     const projectThreads = threads.filter((thread) => thread.projectId === activeProjectId);
 
     if (projectThreads.length === 0) {
-      const initialThread = createThreadRecord(activeProjectId, activeWorkspaceSummary, activeWorkspaceDetails);
+      const initialThread = createThreadRecord(
+        activeProjectId,
+        activeWorkspaceSummary,
+        activeWorkspaceDetails,
+      );
       setThreads((currentThreads) => [initialThread, ...currentThreads]);
       setActiveThreadId(initialThread.id);
       return;
     }
 
     if (!projectThreads.some((thread) => thread.id === activeThreadId)) {
-      const nextThread = [...projectThreads].sort((left, right) => right.updatedAt.localeCompare(left.updatedAt))[0];
+      const nextThread = [...projectThreads].sort((left, right) =>
+        right.updatedAt.localeCompare(left.updatedAt),
+      )[0];
       setActiveThreadId(nextThread?.id ?? null);
     }
-  }, [activeProjectId, activeThreadId, activeWorkspaceDetails, activeWorkspaceSummary, didHydrate, threads]);
+  }, [
+    activeProjectId,
+    activeThreadId,
+    activeWorkspaceDetails,
+    activeWorkspaceSummary,
+    didHydrate,
+    threads,
+  ]);
+
+  const activeThreadForScroll = threads.find((thread) => thread.id === activeThreadId) ?? null;
 
   useEffect(() => {
-    if (activeView !== "thread") {
+    if (activeView !== "thread" || !activeThreadForScroll) {
       return;
     }
 
     window.requestAnimationFrame(() => {
       scrollRef.current?.scrollTo({ behavior: "auto", top: scrollRef.current.scrollHeight });
     });
-  }, [activeThreadId, activeView, threads.length]);
+  }, [activeThreadForScroll, activeView]);
 
   const orderedThreads = [...threads].sort((left, right) => {
     if ((left.pinned ?? false) !== (right.pinned ?? false)) {
@@ -399,7 +420,8 @@ export function ChatWorkspace({
     if (window.corexa?.workspace?.pickFolder) {
       nextPath = await window.corexa.workspace.pickFolder();
     } else {
-      const folderCount = projects.filter((project) => project.kind === "existing-folder").length + 1;
+      const folderCount =
+        projects.filter((project) => project.kind === "existing-folder").length + 1;
       nextPath = `/Users/demo/existing-folder-${folderCount}`;
     }
 
@@ -485,9 +507,15 @@ export function ChatWorkspace({
       title: "Task request",
     };
 
-    const assistantMessage = buildAssistantMessage(prompt, activeWorkspaceSummary, activeWorkspaceDetails);
+    const assistantMessage = buildAssistantMessage(
+      prompt,
+      activeWorkspaceSummary,
+      activeWorkspaceDetails,
+    );
     const nextTitle =
-      activeThread.messages.length <= 1 ? prompt.replace(/\s+/g, " ").slice(0, 64) : activeThread.title;
+      activeThread.messages.length <= 1
+        ? prompt.replace(/\s+/g, " ").slice(0, 64)
+        : activeThread.title;
 
     updateThread(activeThread.id, (thread) => ({
       ...thread,
@@ -547,7 +575,10 @@ export function ChatWorkspace({
   }
 
   return (
-    <section className="h-full overflow-hidden bg-[var(--corexa-app-bg)] text-xs" style={themeStyles}>
+    <section
+      className="h-full overflow-hidden bg-[var(--corexa-app-bg)] text-xs"
+      style={themeStyles}
+    >
       <DesktopShellLayout
         isCompactSidebar={settings.compactSidebar}
         panel={

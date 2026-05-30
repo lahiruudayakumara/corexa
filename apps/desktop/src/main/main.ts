@@ -1,8 +1,8 @@
-import { app, BrowserWindow, nativeImage } from "electron";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { createMainWindow } from "./windows.js";
+import { BrowserWindow, app, nativeImage } from "electron";
 import { registerIpcHandlers } from "./ipc.js";
+import { createMainWindow } from "./windows.js";
 
 const COREXA_APP_ID = "com.corexa.desktop";
 const COREXA_APP_NAME = "Corexa";

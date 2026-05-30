@@ -1,4 +1,5 @@
 import { BRAND_LOGO_SRC } from "../constants.js";
+import { formatRelativeTime, getProjectKindLabel } from "../helpers.js";
 import {
   IconAdd,
   IconClock,
@@ -11,13 +12,7 @@ import {
   IconSearch,
   IconSettings,
 } from "../icons.js";
-import { formatRelativeTime, getProjectKindLabel } from "../helpers.js";
-import type {
-  ProjectRecord,
-  PromptSurfaceItem,
-  SidebarMode,
-  ThreadRecord,
-} from "../types.js";
+import type { ProjectRecord, PromptSurfaceItem, SidebarMode, ThreadRecord } from "../types.js";
 
 type WorkspaceSidebarProps = {
   activeProject: ProjectRecord | null;
@@ -66,12 +61,8 @@ function SidebarPromptList({
           }}
           type="button"
         >
-          <p className="text-xs font-medium text-(--corexa-text-primary)">
-            {item.title}
-          </p>
-          <p className="mt-1 text-xs leading-6 text-(--corexa-text-muted)">
-            {item.description}
-          </p>
+          <p className="text-xs font-medium text-(--corexa-text-primary)">{item.title}</p>
+          <p className="mt-1 text-xs leading-6 text-(--corexa-text-muted)">{item.description}</p>
         </button>
       ))}
     </div>
@@ -106,11 +97,7 @@ export function WorkspaceSidebar({
 }: WorkspaceSidebarProps) {
   const matchingThreadCount = pinnedThreads.length + unpinnedThreads.length;
   const sidebarTitle =
-    sidebarMode === "threads"
-      ? "Chats"
-      : sidebarMode === "automations"
-        ? "Automations"
-        : "Skills";
+    sidebarMode === "threads" ? "Chats" : sidebarMode === "automations" ? "Automations" : "Skills";
 
   const renderSidebarContent = () => {
     if (sidebarMode === "automations") {
@@ -124,13 +111,7 @@ export function WorkspaceSidebar({
     }
 
     if (sidebarMode === "skills") {
-      return (
-        <SidebarPromptList
-          items={skillItems}
-          label="skill"
-          onInjectPrompt={onInjectPrompt}
-        />
-      );
+      return <SidebarPromptList items={skillItems} label="skill" onInjectPrompt={onInjectPrompt} />;
     }
 
     return (
@@ -402,9 +383,7 @@ export function WorkspaceSidebar({
           </div>
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto pr-2">
-          {renderSidebarContent()}
-        </div>
+        <div className="min-h-0 flex-1 overflow-y-auto pr-2">{renderSidebarContent()}</div>
       </div>
 
       <button

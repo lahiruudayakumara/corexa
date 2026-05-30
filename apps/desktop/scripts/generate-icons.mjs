@@ -1,6 +1,6 @@
+import { spawnSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -19,7 +19,9 @@ function runOrThrow(command, args) {
   const result = spawnSync(command, args, { stdio: "inherit" });
 
   if (result.status !== 0) {
-    throw new Error(`${command} ${args.join(" ")} failed with exit code ${result.status ?? "unknown"}`);
+    throw new Error(
+      `${command} ${args.join(" ")} failed with exit code ${result.status ?? "unknown"}`,
+    );
   }
 }
 
@@ -52,7 +54,13 @@ mkdirSync(swiftModuleCacheDir, { recursive: true });
 rmSync(iconsetDir, { recursive: true, force: true });
 mkdirSync(iconsetDir, { recursive: true });
 
-runOrThrow("swift", ["-module-cache-path", swiftModuleCacheDir, swiftScriptPath, sourcePng, iconsetDir]);
+runOrThrow("swift", [
+  "-module-cache-path",
+  swiftModuleCacheDir,
+  swiftScriptPath,
+  sourcePng,
+  iconsetDir,
+]);
 
 const iconsetPngPath = join(iconsetDir, "icon_512x512@2x.png");
 copyFileSync(iconsetPngPath, desktopPngPath);

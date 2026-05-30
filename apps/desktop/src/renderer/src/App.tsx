@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import type { RuntimeHealth, WorkspaceDetails, WorkspaceSummary } from "@corexa/shared";
+import { useCallback, useEffect, useState } from "react";
 import { ChatWorkspace } from "./components/ChatWorkspace.js";
 
 declare global {
@@ -50,7 +50,7 @@ export function App(): JSX.Element {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function loadDesktopState(): Promise<void> {
+  const loadDesktopState = useCallback(async (): Promise<void> => {
     if (!window.corexa) {
       setHealth(previewHealth);
       setWorkspace(previewWorkspace);
@@ -78,11 +78,11 @@ export function App(): JSX.Element {
     } finally {
       setIsRefreshing(false);
     }
-  }
+  }, []);
 
   useEffect(() => {
     void loadDesktopState();
-  }, []);
+  }, [loadDesktopState]);
 
   return (
     <main className="h-screen overflow-hidden bg-transparent text-slate-900">

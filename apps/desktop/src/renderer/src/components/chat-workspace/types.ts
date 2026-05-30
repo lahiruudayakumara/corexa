@@ -1,4 +1,9 @@
-import type { RuntimeHealth, WorkspaceDetails, WorkspaceEntry, WorkspaceSummary } from "@corexa/shared";
+import type {
+  RuntimeHealth,
+  WorkspaceDetails,
+  WorkspaceEntry,
+  WorkspaceSummary,
+} from "@corexa/shared";
 
 export type ChatWorkspaceProps = {
   details: WorkspaceDetails | null;

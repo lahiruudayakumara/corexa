@@ -1,6 +1,6 @@
-import { BrowserWindow } from "electron";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
+import { BrowserWindow } from "electron";
 
 export function createMainWindow(): BrowserWindow {
   const isMac = process.platform === "darwin";
