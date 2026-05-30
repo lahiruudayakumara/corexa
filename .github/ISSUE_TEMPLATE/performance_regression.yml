@@ -1,0 +1,56 @@
+name: Performance regression
+description: Report a startup, indexing, inference, rendering, or memory performance issue
+title: "[Performance] "
+labels: ["performance", "triage"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Performance area
+      options:
+        - Desktop startup
+        - UI responsiveness
+        - CLI command latency
+        - Runtime inference
+        - Model loading
+        - Repository scanning
+        - Indexing and embeddings
+        - Semantic search
+        - Terminal execution
+        - Memory usage
+    validations:
+      required: true
+  - type: textarea
+    id: regression
+    attributes:
+      label: Regression summary
+      description: What became slower or heavier, and compared to what baseline?
+      placeholder: Startup increased from 3s to 14s after enabling workspace restore on macOS.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide a deterministic benchmark or repeatable workflow.
+    validations:
+      required: true
+  - type: textarea
+    id: measurements
+    attributes:
+      label: Measurements
+      description: Include timings, memory numbers, CPU load, repository size, or screenshots of profiling data.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, hardware, Corexa branch or version, provider/runtime, repository size, and any profiling tools used.
+    validations:
+      required: true
+  - type: textarea
+    id: traces
+    attributes:
+      label: Traces, profiles, or logs
+      description: Paste traces, flamegraphs, screenshots, or log snippets if available.

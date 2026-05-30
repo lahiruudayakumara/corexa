@@ -16,6 +16,7 @@ This is the primary documentation hub for Corexa.
 - [Roadmap](product/roadmap.md)
 - [Project Goals](project/goals.md)
 - [Execution Plan](project/execution-plan.md)
+- [GitHub Issues](project/github-issues.md)
 - [Milestones](project/milestones.md)
 - [Open Source Model](project/open-source-model.md)
 

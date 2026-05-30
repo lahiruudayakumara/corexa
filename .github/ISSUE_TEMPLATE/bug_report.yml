@@ -1,36 +1,119 @@
 name: Bug report
-description: Report a defect in Corexa
+description: Report a crash, defect, broken workflow, or incorrect behavior in Corexa
 title: "[Bug] "
-labels: ["bug"]
+labels: ["bug", "triage"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. Please share enough detail for another contributor to reproduce the issue reliably.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-flight
+      options:
+        - label: I searched existing issues and did not find a duplicate
+          required: true
+        - label: I reviewed the contributor and support docs before filing this issue
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      description: Which part of Corexa is failing?
+      options:
+        - Desktop app
+        - CLI
+        - Runtime engine
+        - Agents and orchestration
+        - Repository intelligence
+        - Memory and indexing
+        - Plugin system
+        - Documentation
+        - CI or release automation
+        - Other
+    validations:
+      required: true
   - type: textarea
     id: summary
     attributes:
       label: Summary
-      description: What happened and what did you expect instead?
+      description: What happened, and what should have happened instead?
+      placeholder: Corexa crashes when opening a workspace with a large repository. I expected the workspace to load and show indexing progress.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Describe the intended result.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Describe the observed result, including error messages or symptoms.
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
       label: Reproduction steps
-      description: Provide the smallest reliable set of steps to reproduce the problem
+      description: Provide the smallest reliable set of steps to reproduce the problem.
+      placeholder: |
+        1. Run `pnpm --filter @corexa/desktop dev`
+        2. Open Settings > Appearance
+        3. Switch to System theme
+        4. Observe the window crash
+    validations:
+      required: true
+  - type: dropdown
+    id: regression
+    attributes:
+      label: Regression
+      description: Did this previously work?
+      options:
+        - Yes, this worked in an earlier version
+        - No, this has never worked for me
+        - Unknown
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How bad is the impact?
+      options:
+        - Critical - blocks usage or causes data loss
+        - High - major workflow broken
+        - Medium - degraded workflow with workaround
+        - Low - minor defect or polish issue
     validations:
       required: true
   - type: textarea
     id: environment
     attributes:
       label: Environment
-      description: OS, Corexa version, model provider, and workspace details
+      description: Include OS, CPU architecture, Corexa version or branch, package manager, model runtime, and repository context.
+      placeholder: macOS 15.5 arm64, main branch, pnpm 10.x, local Corexa runtime, workspace with 120k files
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
-      label: Logs or traces
-      description: Paste relevant logs, stack traces, or screenshots
+      label: Logs, traces, or screenshots
+      description: Paste relevant logs or attach screenshots. Remove secrets before posting.
+      render: shell
   - type: textarea
     id: impact
     attributes:
       label: Impact
-      description: How severe is this problem and who does it affect?
+      description: Who is affected, how often it occurs, and whether there is a workaround.
+  - type: checkboxes
+    id: follow_up
+    attributes:
+      label: Follow-up
+      options:
+        - label: I can help validate a fix
+        - label: I can work on a fix for this issue
