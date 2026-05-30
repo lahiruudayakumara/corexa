@@ -15,6 +15,8 @@
   "files": {
     "ignore": [
       "dist/**",
+      "out/**",
+      "apps/desktop/out/**",
       "build/**",
       ".turbo/**",
       "coverage/**",

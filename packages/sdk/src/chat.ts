@@ -1,4 +1,4 @@
-import { CorexaRuntimeClient } from "@corexa/runtime-client";
+import type { CorexaRuntimeClient } from "@corexa/runtime-client";
 
 export async function* streamChat(
   client: CorexaRuntimeClient,
