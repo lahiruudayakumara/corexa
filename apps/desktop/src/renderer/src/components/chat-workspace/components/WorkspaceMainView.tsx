@@ -24,17 +24,17 @@ export function WorkspaceMainView({
   if (activeView === "context") {
     return (
       <div className="max-w-[980px] space-y-8">
-        <p className="text-[21px] font-medium tracking-tight text-[var(--corexa-text-primary)]">
+        <p className="text-xs font-medium tracking-tight text-[var(--corexa-text-primary)]">
           Local workspace context
         </p>
         <div className="space-y-5">
-          <p className="text-[15px] leading-[1.85] text-[var(--corexa-text-primary)]">
+          <p className="text-xs leading-[1.85] text-[var(--corexa-text-primary)]">
             {workspacePath}
           </p>
-          <p className="text-[15px] leading-[1.85] text-[var(--corexa-text-primary)]">
+          <p className="text-xs leading-[1.85] text-[var(--corexa-text-primary)]">
             Languages: {languages}
           </p>
-          <p className="text-[15px] leading-[1.85] text-[var(--corexa-text-primary)]">
+          <p className="text-xs leading-[1.85] text-[var(--corexa-text-primary)]">
             Branch: {branch}
           </p>
         </div>
@@ -52,8 +52,8 @@ export function WorkspaceMainView({
               }}
               type="button"
             >
-              <span className="text-[14px] text-[var(--corexa-text-primary)]">{entry.path}</span>
-              <span className="text-[14px] text-[var(--corexa-text-soft)]">{entry.kind}</span>
+              <span className="text-xs text-[var(--corexa-text-primary)]">{entry.path}</span>
+              <span className="text-xs text-[var(--corexa-text-soft)]">{entry.kind}</span>
             </button>
           ))}
         </div>
@@ -64,16 +64,16 @@ export function WorkspaceMainView({
   if (activeView === "activity") {
     return (
       <div className="max-w-[980px] space-y-8">
-        <p className="text-[21px] font-medium tracking-tight text-[var(--corexa-text-primary)]">
+        <p className="text-xs font-medium tracking-tight text-[var(--corexa-text-primary)]">
           Session activity
         </p>
         <div className="space-y-5">
           {(activeThread?.activity ?? []).map((item) => (
             <div className="space-y-1" key={item.id}>
-              <p className="text-[15px] leading-[1.8] text-[var(--corexa-text-primary)]">
+              <p className="text-xs leading-[1.8] text-[var(--corexa-text-primary)]">
                 {item.description}
               </p>
-              <p className="text-[14px] text-[var(--corexa-text-soft)]">
+              <p className="text-xs text-[var(--corexa-text-soft)]">
                 {formatMessageTime(item.createdAt)}
               </p>
             </div>
@@ -86,7 +86,7 @@ export function WorkspaceMainView({
   if (activeView === "changes") {
     return (
       <div className="max-w-[980px] space-y-8">
-        <p className="text-[21px] font-medium tracking-tight text-[var(--corexa-text-primary)]">
+        <p className="text-xs font-medium tracking-tight text-[var(--corexa-text-primary)]">
           Working tree
         </p>
 
@@ -101,13 +101,13 @@ export function WorkspaceMainView({
                 }}
                 type="button"
               >
-                <span className="text-[14px] text-[var(--corexa-text-primary)]">{path}</span>
-                <span className="text-[14px] text-[var(--corexa-text-soft)]">changed</span>
+                <span className="text-xs text-[var(--corexa-text-primary)]">{path}</span>
+                <span className="text-xs text-[var(--corexa-text-soft)]">changed</span>
               </button>
             ))}
           </div>
         ) : (
-          <p className="text-[15px] leading-[1.85] text-[var(--corexa-text-primary)]">
+          <p className="text-xs leading-[1.85] text-[var(--corexa-text-primary)]">
             There are no local file changes right now. Start a task from the composer and I’ll keep
             the follow-up grounded in the current branch.
           </p>
@@ -121,7 +121,7 @@ export function WorkspaceMainView({
       {activeThread?.messages.map((message) =>
         message.role === "user" ? (
           <div className="flex justify-end" key={message.id}>
-            <div className="max-w-[700px] rounded-[18px] bg-[var(--corexa-user-bubble)] px-5 py-3 text-[15px] leading-[1.65] text-[var(--corexa-text-primary)]">
+            <div className="max-w-[700px] rounded-[18px] bg-[var(--corexa-user-bubble)] px-5 py-3 text-xs leading-[1.65] text-[var(--corexa-text-primary)]">
               {renderInlineContent(message.body)}
             </div>
           </div>

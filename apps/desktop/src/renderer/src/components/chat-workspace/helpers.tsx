@@ -273,7 +273,7 @@ export function renderInlineContent(text: string): ReactNode {
     if (part.startsWith("`") && part.endsWith("`")) {
       return (
         <code
-          className="rounded-[12px] bg-[var(--corexa-code-bg)] px-2 py-1 font-mono text-[0.94em] text-[var(--corexa-text-primary)]"
+          className="rounded-[12px] bg-[var(--corexa-code-bg)] px-2 py-1 font-mono text-xs text-[var(--corexa-text-primary)]"
           key={`${part}-${index}`}
         >
           {part.slice(1, -1)}
@@ -300,7 +300,7 @@ export function renderBodyBlocks(text: string, keyPrefix: string): ReactNode {
         <ul className="list-disc space-y-3 pl-7" key={`${keyPrefix}-bullets-${blockIndex}`}>
           {bulletLines.map((line, lineIndex) => (
             <li
-              className="text-[15px] leading-[1.8] text-[var(--corexa-text-primary)]"
+              className="text-xs leading-[1.8] text-[var(--corexa-text-primary)]"
               key={`${line}-${lineIndex}`}
             >
               {renderInlineContent(line.replace(/^\s*-\s+/, ""))}
@@ -315,7 +315,7 @@ export function renderBodyBlocks(text: string, keyPrefix: string): ReactNode {
         <ol className="list-decimal space-y-3 pl-7" key={`${keyPrefix}-ordered-${blockIndex}`}>
           {bulletLines.map((line, lineIndex) => (
             <li
-              className="text-[15px] leading-[1.8] text-[var(--corexa-text-primary)]"
+              className="text-xs leading-[1.8] text-[var(--corexa-text-primary)]"
               key={`${line}-${lineIndex}`}
             >
               {renderInlineContent(line.replace(/^\s*\d+\.\s+/, ""))}
@@ -327,7 +327,7 @@ export function renderBodyBlocks(text: string, keyPrefix: string): ReactNode {
 
     return (
       <p
-        className="text-[15px] leading-[1.85] text-[var(--corexa-text-primary)]"
+        className="text-xs leading-[1.85] text-[var(--corexa-text-primary)]"
         key={`${keyPrefix}-paragraph-${blockIndex}`}
       >
         {renderInlineContent(normalizedBlock.replace(/\n/g, " "))}

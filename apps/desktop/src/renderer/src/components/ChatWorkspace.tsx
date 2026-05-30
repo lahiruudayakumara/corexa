@@ -547,7 +547,7 @@ export function ChatWorkspace({
   }
 
   return (
-    <section className="h-full overflow-hidden bg-[var(--corexa-app-bg)]" style={themeStyles}>
+    <section className="h-full overflow-hidden bg-[var(--corexa-app-bg)] text-xs" style={themeStyles}>
       <DesktopShellLayout
         isCompactSidebar={settings.compactSidebar}
         panel={

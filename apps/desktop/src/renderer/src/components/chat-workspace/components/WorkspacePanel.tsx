@@ -75,10 +75,10 @@ export function WorkspacePanel({
     <div className="relative flex min-h-0 flex-col border-l border-[color:var(--corexa-border-subtle)] bg-[var(--corexa-main-bg)]">
       <header className="drag-region flex items-center justify-between px-8 py-4">
         <div className="flex min-w-0 items-center gap-3">
-          <h1 className="truncate text-[16px] font-semibold tracking-tight text-[var(--corexa-text-primary)]">
+          <h1 className="truncate text-xs font-semibold tracking-tight text-[var(--corexa-text-primary)]">
             {activeThread?.title ?? "New chat"}
           </h1>
-          <span className="truncate text-[16px] text-[var(--corexa-text-soft)]">{workspaceLabel}</span>
+          <span className="truncate text-xs text-[var(--corexa-text-soft)]">{workspaceLabel}</span>
           <button
             className="no-drag rounded-full p-2 text-[var(--corexa-text-muted)] transition hover:bg-[var(--corexa-muted-bg)] hover:text-[var(--corexa-text-primary)]"
             onClick={onRefresh}
@@ -98,7 +98,7 @@ export function WorkspacePanel({
           </button>
 
           <button
-            className="flex items-center gap-3 rounded-full border border-[color:var(--corexa-border-subtle)] bg-[var(--corexa-composer-bg)] px-4 py-2.5 text-[14px] font-medium text-[var(--corexa-text-primary)] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition hover:bg-[var(--corexa-muted-bg)]"
+            className="flex items-center gap-3 rounded-full border border-[color:var(--corexa-border-subtle)] bg-[var(--corexa-composer-bg)] px-4 py-2.5 text-xs font-medium text-[var(--corexa-text-primary)] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition hover:bg-[var(--corexa-muted-bg)]"
             onClick={() => {
               onSetActiveView("context");
             }}
@@ -110,7 +110,7 @@ export function WorkspacePanel({
           </button>
 
           <button
-            className="flex items-center gap-3 rounded-full border border-[color:var(--corexa-border-subtle)] bg-[var(--corexa-composer-bg)] px-4 py-2.5 text-[14px] font-medium text-[var(--corexa-text-soft)] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition hover:bg-[var(--corexa-muted-bg)]"
+            className="flex items-center gap-3 rounded-full border border-[color:var(--corexa-border-subtle)] bg-[var(--corexa-composer-bg)] px-4 py-2.5 text-xs font-medium text-[var(--corexa-text-soft)] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition hover:bg-[var(--corexa-muted-bg)]"
             onClick={() => {
               onSetActiveView("changes");
             }}
@@ -173,7 +173,7 @@ export function WorkspacePanel({
           <div className="mx-auto max-w-[1180px]">
             <div className="rounded-[22px] border border-[color:var(--corexa-border-subtle)] bg-[var(--corexa-composer-bg)] px-6 pb-4 pt-5 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
               <textarea
-                className="min-h-[92px] w-full resize-none bg-transparent text-[15px] leading-[1.7] text-[var(--corexa-text-primary)] outline-none placeholder:text-[var(--corexa-text-soft)]"
+                className="min-h-[92px] w-full resize-none bg-transparent text-xs leading-[1.7] text-[var(--corexa-text-primary)] outline-none placeholder:text-[var(--corexa-text-soft)]"
                 onChange={(event) => {
                   onSetComposer(event.target.value);
                 }}
@@ -201,7 +201,7 @@ export function WorkspacePanel({
                   </button>
 
                   <button
-                    className="flex items-center gap-2 text-[15px] text-[var(--corexa-text-primary)]"
+                    className="flex items-center gap-2 text-xs text-[var(--corexa-text-primary)]"
                     onClick={onCycleModelPreset}
                     type="button"
                   >
@@ -242,7 +242,7 @@ export function WorkspacePanel({
         </div>
 
         <div className="absolute inset-x-0 bottom-4 px-8">
-          <div className="mx-auto flex max-w-[1180px] items-center justify-between text-[14px] text-[var(--corexa-text-muted)]">
+          <div className="mx-auto flex max-w-[1180px] items-center justify-between text-xs text-[var(--corexa-text-muted)]">
             <button
               className="flex items-center gap-2 transition hover:text-[var(--corexa-text-primary)]"
               onClick={() => {
@@ -257,12 +257,12 @@ export function WorkspacePanel({
 
             <div className="flex items-center gap-3">
               {error ? (
-                <span className="rounded-full bg-[var(--corexa-muted-bg)] px-3 py-1 text-[12px] font-medium text-[var(--corexa-text-muted)]">
+                <span className="rounded-full bg-[var(--corexa-muted-bg)] px-3 py-1 text-xs font-medium text-[var(--corexa-text-muted)]">
                   {error}
                 </span>
               ) : null}
               {isRefreshing ? (
-                <span className="rounded-full bg-[var(--corexa-muted-bg)] px-3 py-1 text-[12px] font-medium text-[var(--corexa-text-muted)]">
+                <span className="rounded-full bg-[var(--corexa-muted-bg)] px-3 py-1 text-xs font-medium text-[var(--corexa-text-muted)]">
                   Syncing
                 </span>
               ) : null}
@@ -270,7 +270,7 @@ export function WorkspacePanel({
                 <IconBranch className="h-4 w-4" />
                 <span>{branch}</span>
               </span>
-              <span className="rounded-full bg-[var(--corexa-muted-bg)] px-3 py-1 text-[12px] font-medium text-[var(--corexa-text-muted)]">
+              <span className="rounded-full bg-[var(--corexa-muted-bg)] px-3 py-1 text-xs font-medium text-[var(--corexa-text-muted)]">
                 {permissionMode}
               </span>
             </div>
