@@ -27,7 +27,7 @@ jobs:
 
       - name: Setup pnpm
         if: matrix.setup == 'node'
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
         if: matrix.setup == 'node'
