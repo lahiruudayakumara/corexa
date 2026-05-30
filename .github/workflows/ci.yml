@@ -23,7 +23,7 @@ jobs:
           - setup: go
           - setup: rust
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup pnpm
         if: matrix.setup == 'node'
